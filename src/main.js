@@ -26,7 +26,12 @@ const routes=[{
 	component : Home
 },{
 	path : '/time-entries',
-	component : TimeEntries
+	component : TimeEntries,
+	children : [{
+    path : 'log-time',
+    // 懒加载
+    component : resolve => require(['./components/LogTime.vue'],resolve),
+  }]
 }]
 // vue-router路由参数由对象统一变成了数组（与vue1.0不同）
 const router = new VueRouter({
